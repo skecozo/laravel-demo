@@ -27,6 +27,7 @@ $api->version('v1', function ($api) {
         $api->get('github','AuthController@redirectToProvider')->middleware('web');
         $api->get('github/login','AuthController@handleProviderCallback')->middleware('web');
         $api->get('github/get','AuthController@gettoken')->middleware('web');
+        $api->get('github/getuser','AuthController@getgithubuser')->middleware('web');
 
         $api->post('user/register','AuthController@register');
         $api->post('user/login','AuthController@login');
@@ -39,7 +40,7 @@ $api->version('v1', function ($api) {
         $api->get('user/markasread/{id}','AuthController@markasread')->middleware('jwt.auth');
         $api->get('user/markasread','AuthController@markallread')->middleware('jwt.auth');
 
-        $api->get('email/verify/{token}',['as'=>'email.verify','uses' =>'EmailController@verify']);
+        $api->get('email/verify/{token}',['as'=>'email.verify','uses' =>'EmailController@verify'])->middleware('web');
 
 
 

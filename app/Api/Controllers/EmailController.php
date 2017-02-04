@@ -10,6 +10,7 @@ namespace App\Api\Controllers;
 
 
 use App\User;
+use Illuminate\Support\Facades\Session;
 
 class EmailController extends BaseController
 {
@@ -25,6 +26,11 @@ class EmailController extends BaseController
            // $user->confirmation_token=str_random(48);
             $user->save();
         }
-          return redirect()->to('/login')->with('message','请登录');
+
+          return redirect()->to('/login')->with('message','验证成功请登录');
+
+
+
     }
+
 }

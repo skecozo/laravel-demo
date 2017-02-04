@@ -6,7 +6,7 @@
                     <h1>简书</h1>
                     <h3>交流故事，沟通想法</h3>
                     <p>一个基于内容分享的社区</p>
-                    <router-link :to="'/create'">
+                    <router-link :to="'/user/create'">
                     <a><i class="fa fa-home"></i>提笔写篇文章</a>
                     </router-link>
                 </div>

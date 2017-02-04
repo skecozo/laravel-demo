@@ -12,9 +12,15 @@
 */
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
 Route::get('/text', function () {
-   Cache::put('foo','ba',10);
-    return Cache::get('foo');
+   /*Cache::put('foo','ba',10);
+    return Cache::get('foo');*/
+
+
+
+
+    return Session::all();
 });
 
 /*Route::get('login', 'HomeController@handleProviderCallback');*/

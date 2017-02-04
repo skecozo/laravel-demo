@@ -33,7 +33,9 @@
                             </ul>
                         </div>
                     </div>
-                    <button class="btn btn-large btn-success" href="user/create">写文章</button>
+                    <router-link :to="'/user/create'">
+                    <button class="btn btn-large btn-success" >写文章</button>
+                        </router-link>
                     <!-- <hr> notebooks -->
                     <!-- <hr> collections -->
                     <!-- <hr> editable collections -->
@@ -69,7 +71,7 @@
                                         </div>
                                         <p>
                                             <a target="_blank" href="#">{{activity.name}}</a> 评论了文章
-                                            <router-link :to="{ name: 'article', params: { id:activity.conversation_article_id}}">
+                                            <router-link :to="{ name: 'article', params: { id:activity.conversation_article.id}}">
                                             <a target="_blank" >{{activity.conversation_article_user_title}}</a>
                                             </router-link>
                                         </p>
@@ -81,8 +83,8 @@
                                             <i class="fa fa-quote-right"></i>
                                         </p>
                                         <div class="meta">
-                                            <router-link :to="{ name: 'article', params: { id:activity.conversation_article_id}}">
-                                            <a class="reply" target="_blank" href="">查看</a>
+                                            <router-link :to="{ name: 'article', params: { id:activity.conversation_article.id}}">
+                                            <a class="reply" target="_blank" >查看</a>
                                                 </router-link>
                                             <time>{{activity.created_at}}</time>
                                         </div>
@@ -97,7 +99,7 @@
                                         </div>
                                         <div class="article-content">
                                             <router-link :to="{ name: 'article', params: { id:activity.conversation_id}}">
-                                            <a class="title" target="_blank" href="/p/735152cdf329">{{activity.conversation_title}}</a>
+                                            <a class="title" target="_blank" >{{activity.conversation_title}}</a>
                                                 </router-link>
 
                                             <p>
@@ -105,8 +107,8 @@
                                             </p>
                                         </div>
                                         <div class="meta">
-                                            <a class="reply toggle-comments-display" data-comments-id="comments-73031704" href="/p/735152cdf329#comments">评论({{activity.conversation_content_count}})</a>
-                                            <a target="_blank" href="/notebooks/7343323/latest">
+                                            <a class="reply toggle-comments-display" data-comments-id="comments-73031704" >评论({{activity.conversation_content_count}})</a>
+                                            <a target="_blank" >
                                                 <i class="fa fa-book"></i>
                                             </a>      <i class="fa fa-th"></i>
 

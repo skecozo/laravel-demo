@@ -77,7 +77,7 @@
             <div class="more-sign">
                 <h6>社交帐号直接注册</h6>
                 <ul>
-                    <li><a class="weibo" ><i class="fa fa-github"></i></a></li>
+                    <li><a class="weibo" @click.stop.prevent="github()"><i class="fa fa-github"></i></a></li>
 
                 </ul>
 
@@ -111,12 +111,16 @@ export default{
         mounted(){
            if(this.$route.query.type=='login'){
 
-                 this.sign='sign_in'
+                this.sign='sign_in'
            };
+
+
+           this.getgithubuser();
 
         },
 
         methods:{
+
              changeSign(sign){
 
                  this.sign =sign
@@ -166,17 +170,20 @@ export default{
              github() {
 
                 window.location.href = 'http://blog.hd/api/github'
-                      this.$http.get('/api/github') .then((response) => {
+
+             },
+             getgithubuser(){
+                    this.$http.get('/api/github/getuser') .then((response) => {
 
                        let user =response.data.data
                     //   window.window.sessionStorage.user = JSON.stringify(user);
-                         localStorage.setItem('id_token', response.data.meta.token);
-                         localStorage.setItem('user', JSON.stringify(response.data.data));
+                    localStorage.setItem('id_token', response.data.meta.token);
+                    localStorage.setItem('user', JSON.stringify(response.data.data));
 
                        //  console.log(localStorage.getItem('user'));
 
                         this.$store.dispatch('setUserInfo', user);
-                        this.$router.go(-1)
+                        this.$router.push('/')
 
 
                     })

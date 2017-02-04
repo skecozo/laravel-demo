@@ -165,8 +165,9 @@ export default{
 
                  this.$http.post('/api/article', formData)
                         .then((response) => {
+                         this.$notify.success("发表成功")
+                        this.$router.push('/user')
 
-                        console.log(response.data);
 
                         }, (response) => {
 

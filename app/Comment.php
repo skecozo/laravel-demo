@@ -40,7 +40,11 @@ class Comment extends Model
     {
         return $this->morphMany(self::class, 'commentable')->with('user');
     }
+    public function article()
+    {
+        return $this->belongsTo(Article::class,'parent_id');
 
+    }
     /*public function parent()
     {
         return $this->belongsTo(self::class,'parent_id');

@@ -7,20 +7,29 @@
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Example</title>
+    <title>000</title>
     <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
 
+    <script>
+        window.Laravel = {
+            csrfToken: "{{ csrf_token() }}"
+        }
+        @if(session('message'))
+        window.Message = <?php echo json_encode([
+                'message' => [session('message')],
+        ]); ?>
 
+
+        @endif
+
+
+
+
+
+    </script>
 
 </head>
-<script>
-    window.Laravel = {
-        csrfToken: "{{ csrf_token() }}"
-    }
 
-
-
-</script>
 <body>
 <div id="app"></div>
 

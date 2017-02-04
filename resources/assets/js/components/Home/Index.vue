@@ -6,6 +6,7 @@
                 <tags v-on:changestyle="changestyle"></tags>
                 <Articles :articleList="articleList"></Articles>
             </div>
+            <Scrolltop></Scrolltop>
     </div>
 </template>
 <style>
@@ -18,6 +19,7 @@ export default{
             'Sidebar':require('./Sidebar.vue'),
             'Articles':require('./Articles.vue'),
             'Tags':require('./Tags.vue'),
+            'Scrolltop':require('../Scrolltop/index.vue')
      },
      data(){
           return{
@@ -35,8 +37,7 @@ export default{
          loadData(){
             this.$http.get('/api/article')
                     .then((response) => {
-                        console.log(response.data.data);
-                         this.articleList=response.data.data
+                    this.articleList=response.data.data
 
 
                     }, (response) => {

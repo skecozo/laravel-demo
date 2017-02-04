@@ -22,6 +22,12 @@ Vue.use(VueRouter)
 Vue.config.debug = true;
 
 
+if(window.Message) {
+Vue.notify.success(Message)
+   console.log(Message)
+ }
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

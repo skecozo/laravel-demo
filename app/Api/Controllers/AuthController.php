@@ -91,10 +91,10 @@ class AuthController extends ApiController
             ];
 
         $user= $this->user->store($data);
-        /*(new UserMailer())->sendVerifyEmail($user);
+        (new UserMailer())->sendVerifyEmail($user);
         return response()->json([
             'message' => ["请到邮箱验证"],
-        ]);*/
+        ]);
 
         //return $this->item($user,new UserTransformer());
 
@@ -129,35 +129,7 @@ class AuthController extends ApiController
 
 
 
-/*  public function login(Request $request)
-    {
 
-        $rules = [
-            'email' => 'required',
-            'password' => 'required',
-        ];
-        $payload = app('request')->only('password','email');
-
-        $validator = app('validator')->make($payload, $rules);
-        if ($validator->fails()) {
-            return $this->respondWithValidatorError($validator->errors());
-        }
-
-        if(Auth::attempt([
-            'email'=>$request->get('email'),
-            'password'=>$request->get('password'),
-        ],true)){
-
-            $user=$request->user();
-            return $this->item($user,new UserTransformer());
-
-        }
-        {
-            return 'nononono';
-        }
-
-
-    }*/
     public function follower($id)
     {
         $user = JWTAuth::parseToken()->authenticate();
@@ -195,8 +167,9 @@ class AuthController extends ApiController
         $user = $this->user->getByGithubId($githubUser->id);
         if ($user) {
             $token=JWTAuth::fromUser($user);
-            return redirect()->back()->with($user);
-          //  return $this->item($user,new UserTransformer())->addMeta('token', $token);
+            Session::put('github_token', $token);
+            Session::put('github_user', $user);
+            return redirect()->to('/login')->with('message','登录成功');
         } else {
 
             $data=[
@@ -210,17 +183,25 @@ class AuthController extends ApiController
             ];
             $user= $this->user->store($data);
             $token=JWTAuth::fromUser($user);
-            Session::put('id_token', $token);
-            /*Window.prototype.localStorage.setItem('id_token', $token);
-            return redirect()->to('/');*/
-           // return $this->item($user,new UserTransformer())->addMeta('token', $token);
-            return redirect()->back()->with($user);
+            Session::put('github_token', $token);
+            Session::put('github_user', $user);
+
+            return redirect()->to('/login')->with('message','验证成功');
         }
 
     }
-    public function gettoken()
+
+
+    public function getgithubuser()
     {
-        return Session::all();
+        $token=Session::get('github_token');
+        $user=Session::get('github_user');
+        if($token) {
+            Session::forget('github_token');
+            Session::forget('user');
+            return $this->item($user,new UserTransformer())->addMeta('token', $token);
+
+        }
     }
 
 

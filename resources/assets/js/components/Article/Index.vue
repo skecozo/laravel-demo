@@ -5,7 +5,7 @@
         <Like :islike="islike" v-on:changelike="changelike"
               :likeCount='articleDetail.like_count' ></Like>
         <Comment :userInfo="userInfo"></Comment>
-
+        <Scrolltop></Scrolltop>
     </div>
 </template>
 <style>
@@ -19,7 +19,8 @@ export default{
     components: {
             'ArticleContent':require('./ArticleContent.vue'),
             'Comment':require('./Comment.vue'),
-            'Like':require('./Like.vue')
+            'Like':require('./Like.vue'),
+            'Scrolltop':require('../Scrolltop/index.vue')
             },
 
 

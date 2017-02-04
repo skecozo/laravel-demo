@@ -50,6 +50,7 @@ class CommentController extends ApiController
             'commentable_type'=>$type,
             'content'=>$request->get('content'),
             'user_id'=>$request->get('user_id'),
+            'parent_id'=>$request->get('article_id')
         ];
 
         $comment= $this->comment->store($data);
@@ -67,6 +68,7 @@ class CommentController extends ApiController
             'commentable_type'=>$type,
             'content'=>$request->get('content'),
             'user_id'=>$request->get('user_id'),
+            'parent_id'=>$request->get('article_id')
         ];
         $comment= $this->comment->store($data);
         return $this->item($comment,new CommentTransformer());

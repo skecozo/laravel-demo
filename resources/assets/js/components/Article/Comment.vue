@@ -62,7 +62,9 @@
         </form>
         <div v-show="!userInfo">
             <p class="comment-signin">
-                <button class="btn btn-info" @click.prevent="openLoginModal()">登录后发表评论</button>
+                <router-link :to="'/user'">
+                <button class="btn btn-info">登录后发表评论</button>
+                    </router-link>
             </p>
         </div>
     </div>
@@ -110,6 +112,7 @@ export default{
 
             },
       methods:{
+
               getCommentList(){
               this.$http.get('/api/article/'+this.$route.params.id+'/comment')
                       .then((response) => {
@@ -133,6 +136,7 @@ export default{
                   var formData = new FormData(event.target)
                   formData.append('user_id', this.userInfo.id)
                   formData.append('id', this.$route.params.id)
+                  formData.append('article_id', this.$route.params.id)
                   formData.append('type', 'article')
                   formData.append('content', this.simplemde.value())
 
@@ -181,7 +185,7 @@ export default{
               },
               showReply(index,name){
                     this.reply=(this.reply===index) ?  '': index
-                    this.replycontent='@'+name
+                    this.replycontent='@'+name+' '
               },
 
 
@@ -189,6 +193,7 @@ export default{
                   var formData = new FormData(event.target)
                   formData.append('user_id', this.userInfo.id)
                   formData.append('id', comment.id)
+                  formData.append('article_id', this.$route.params.id)
                   formData.append('type', 'comment')
                   formData.append('content', this.replycontent)
 

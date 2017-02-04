@@ -123,7 +123,9 @@ import { mapGetters } from 'vuex'
          },
 
           mounted(){
-                 this.getMessage();
+
+                     this.getMessage();
+
           },
 
           methods:{
