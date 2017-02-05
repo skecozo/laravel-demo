@@ -56,11 +56,8 @@ $api->version('v1', function ($api) {
 
         $api->post('comment','CommentController@store')->middleware('jwt.auth');
         $api->post('comment/reply','CommentController@replystore')->middleware('jwt.auth');
-
         $api->get('article/{id}/comment','CommentController@article');
         $api->get('comment/{id}/comment','CommentController@comment');
-
-
         $api->put('comment/{id}','CommentController@update')->middleware('jwt.auth');
         $api->delete('comment/{id}','CommentController@destroy')->middleware('jwt.auth');
 
@@ -69,7 +66,7 @@ $api->version('v1', function ($api) {
         $api->get('activity','ActivityController@show');
 
 
-        $api->post('upload','uploadController@uploadFile')->middleware('jwt.auth');
+        $api->post('upload','UploadController@uploadFile')->middleware('jwt.auth');
 
     });
 });

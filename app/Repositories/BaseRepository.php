@@ -34,7 +34,7 @@ trait BaseRepository
     {
         $model->fill($input);
 
-        $model->save();
+        $model->save($input);
 
         return $model;
     }

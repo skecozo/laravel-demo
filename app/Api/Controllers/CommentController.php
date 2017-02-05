@@ -95,7 +95,10 @@ class CommentController extends ApiController
     }
     public function update(CommentRequest $request,$id)
     {
-        $comment=$this->comment->update($id, $request->all());
+          $data=[
+              'content'=>$request->get('content'),
+          ];
+        $comment=$this->comment->update($id, $data);
 
         return $this->item($comment,new CommentTransformer());
 

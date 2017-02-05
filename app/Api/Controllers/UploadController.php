@@ -30,6 +30,7 @@ class UploadController extends ApiController
      */
     public function uploadFile(Request $request)
     {
+
         $file = $_FILES['file'];
         $fileName = $request->get('file_name');
         $fileName = $fileName ?: $file['name'];
