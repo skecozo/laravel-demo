@@ -169,7 +169,7 @@ export default{
 
              github() {
 
-                window.location.href = 'http://blog.hd/api/github'
+                window.location.href = 'https://www.w00000.top/api/github'
 
              },
              getgithubuser(){
