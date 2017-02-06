@@ -37,7 +37,7 @@ return [
     'github' => [
         'client_id' => '8d956702768791449808',
         'client_secret' => 'b001bb01bfbf6db2d1b815ba009c4b2a9969a465',
-        'redirect' => 'http://blog.hd/api/github/login',
+        'redirect' => 'https://www.w00000.top/api/github/login',
     ],
 
 ];
