@@ -1,3 +1,3 @@
 # laravel-demo
 laravel-demo
-www.w0000.top
+[demo]www.w0000.top
