@@ -21,7 +21,7 @@ class Mailer
 
        Mail::raw($content, function ($message) use($email) {
 
-           $message->from('876645@qq.com', 'admin');
+           $message->from('876645@qq.com', 'w00000');
 
            $message->to($email);
        });

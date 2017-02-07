@@ -200,8 +200,8 @@ class AuthController extends ApiController
             Session::forget('github_token');
             Session::forget('user');
             return $this->item($user,new UserTransformer())->addMeta('token', $token);
-
         }
+        return $this->noContent();
     }
 
 

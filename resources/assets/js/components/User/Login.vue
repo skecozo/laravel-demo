@@ -174,7 +174,7 @@ export default{
              },
              getgithubuser(){
                     this.$http.get('/api/github/getuser') .then((response) => {
-
+                    if(response.data){
                        let user =response.data.data
                     //   window.window.sessionStorage.user = JSON.stringify(user);
                     localStorage.setItem('id_token', response.data.meta.token);
@@ -185,8 +185,9 @@ export default{
                         this.$store.dispatch('setUserInfo', user);
                         this.$router.push('/')
 
-
+                    }
                     })
+
              }
 
 

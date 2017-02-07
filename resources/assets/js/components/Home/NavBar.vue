@@ -144,6 +144,7 @@ import { mapGetters } from 'vuex'
                          this.$router.push('/')
                },
                getMessage(){
+                    if(this.userInfo){
                         this.$http.get('/api/user/getmessage')
                                 .then((response) => {
 
@@ -153,6 +154,7 @@ import { mapGetters } from 'vuex'
 
 
                                 })
+                                }
                },
           },
   }
